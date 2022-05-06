@@ -1,10 +1,11 @@
 # Terraform module for Yandex.Cloud VPC
 
-Terraform module which creates [vpc resources](https://cloud.yandex.ru/services/vpc) on [Yandex.Cloud](https://cloud.yandex.ru/).
+Terraform module which creates [VPC resources](https://cloud.yandex.ru/services/vpc) on [Yandex.Cloud](https://cloud.yandex.ru/).
 
 ## Usage
 
 Before using this module, you need to configure provider (or copy `versions.tf`):
+
 ```terraform
 terraform {
   required_version = ">= 0.13"
