@@ -19,7 +19,7 @@ variable "zone_id" {
   default     = "ru-central1-b"
 
   validation {
-    condition     = contains(["ru-central1-a", "ru-central1-b", "ru-central1-c"])
-    error_message = "Zone must be one of: ru-central1-a, ru-central1-b, ru-central1-c"
+    condition     = contains(["ru-central1-a", "ru-central1-b", "ru-central1-c"], var.zone_id)
+    error_message = "Zone must be one of 'ru-central1-a', 'ru-central1-b', 'ru-central1-c'."
   }
 }
