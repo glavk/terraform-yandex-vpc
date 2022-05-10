@@ -4,8 +4,8 @@ locals {}
 # Static IP with DDoS protection (optional)
 ################################################################################
 
-resource "yandex_vpc_address" "this" {
-  description = "Static IP without DDoS protection"
+resource "yandex_vpc_address" "static_ip" {
+  description = "Static IP without DDoS protection for ${each.value}"
 
   for_each = toset(var.static_ip_names)
   name     = each.value
@@ -17,8 +17,8 @@ resource "yandex_vpc_address" "this" {
   }
 }
 
-resource "yandex_vpc_address" "protected" {
-  description = "Static IP with DDoS protection"
+resource "yandex_vpc_address" "protected_ip" {
+  description = "Static IP with DDoS protection for ${each.value}"
 
   for_each = toset(var.ddos_protected_ip_names)
   name     = each.value
@@ -29,5 +29,4 @@ resource "yandex_vpc_address" "protected" {
     zone_id                  = var.zone_id
     ddos_protection_provider = "qrator"
   }
-
 }

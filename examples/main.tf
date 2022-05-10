@@ -23,11 +23,21 @@ locals {
   static_ips         = ["server3.example.com", "server4.example.com"]
 }
 
-module "vpc" {
+# static ips with ddos protection and without ddos protection
+module "vpc_full" {
   source  = "glavk/vpc/yandex"
-  version = "0.1.0"
+  version = "0.1.3"
 
-  zone_id = "ru-central1-b"
+  zone_id                 = "ru-central1-b"
+  static_ip_names         = local.static_ips
+  ddos_protected_ip_names = local.ddos_protected_ips
+}
+
+# static ips without ddos protection only
+module "vpc_no_ddos" {
+  source  = "glavk/vpc/yandex"
+  version = "0.1.3"
+
+  zone_id         = "ru-central1-b"
   static_ip_names = local.static_ips
-
 }
